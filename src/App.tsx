@@ -1,7 +1,10 @@
 // React
-import { useState, useEffect, useContext } from "react";
-import { ProductsProps } from "./types";
+import { useState, useEffect } from "react";
+import { Product } from "./types";
 import axios from "axios";
+import axiosAPI from "utils/axios";
+
+import "_mocks";
 
 // Components
 import Pagination from "./Pagniatios";
@@ -16,7 +19,7 @@ import { AppContextProvider } from "./AppContext";
 import "./style.css";
 
 function App() {
-  const [product, setProduct] = useState<ProductsProps[] | null>();
+  const [product, setProduct] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(4);
 
@@ -33,9 +36,22 @@ function App() {
 
   useEffect(getData, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await axiosAPI.get("/api/posts");
+        // const {data} = await axiosAPI.post("/api/paginacja",{page: 3});
+        console.log("response", data);
+      } catch (e) {
+        console.log();
+      }
+    };
+    fetchData();
+  }, []);
+
   const indexOfLastProduct: number = currentPage * postPerPage;
   const indexOfFirstProdcut: number = indexOfLastProduct - postPerPage;
-  const currentPosts = product?.slice(indexOfFirstProdcut, indexOfLastProduct);
+  const currentPosts = product.slice(indexOfFirstProdcut, indexOfLastProduct);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -46,7 +62,7 @@ function App() {
 
         <Pagination
           postsPerPage={postPerPage}
-          totalPosts={product?.length}
+          totalPosts={product.length}
           paginate={paginate}
         />
 

@@ -1,11 +1,11 @@
-import { createContext, Dispatch, SetStateAction } from "react";
 
-export interface ProductsProps {
-  id: number;
-  title: number;
+export interface Product {
+  id: string;
+  title: string;
+  image: string[];
   description: string;
   price: number;
-  thumbnail: URL;
+  thumbnail: string;
 }
 
 export interface Basket {
