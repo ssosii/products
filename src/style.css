@@ -1,0 +1,43 @@
+.paginationBox{
+    display: flex;
+}
+
+.pagination{
+    padding: 10px;
+    background-color: lightgreen;
+    transition: .4s;
+    width: fit-content;
+    margin: 5px;
+}
+
+.pagination:hover{
+    cursor: pointer;
+    background-color: red;
+    transition: .4s;
+}
+
+.product{
+    display: flex;
+    margin: 10px 0;
+}
+
+.product__image{
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+}
+
+.product__title{
+    font-weight: 700;
+}
+
+.product__add{
+    padding: 5px;
+    width: fit-content;
+    border: 1px solid black;
+}
+
+.product__add:hover{
+    cursor: pointer;
+    background-color: gray;
+}
