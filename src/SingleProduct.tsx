@@ -9,13 +9,19 @@ const SingleProduct = ({
   thumbnail,
   id,
 }: Product) => {
-  const { basketItem, basketValue, setBasketItem, setBasketValue } =
-    useContext(AppContext);
+  const {
+    basketItem,
+    basketValue,
+    setBasketItem,
+    setBasketValue,
+    basketContent,
+    setBasketContent,
+  } = useContext(AppContext);
   const handleAddProduct = () => {
     setBasketItem(basketItem + 1);
     setBasketValue(basketValue + price);
+    setBasketContent([...basketContent, { id, title }]);
   };
-
 
   return (
     <div className="product" key={id}>

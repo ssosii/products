@@ -1,3 +1,4 @@
+import React from "react";
 
 export interface Product {
   id: string;
@@ -8,9 +9,16 @@ export interface Product {
   thumbnail: string;
 }
 
+export interface BakstetContentType {
+  id: string;
+  title: string;
+}
+
 export interface Basket {
   basketValue: number;
   basketItem: number;
-  setBasketValue: (value: number) => void;
-  setBasketItem: (value: number) => void;
+  basketContent: BakstetContentType[];
+  setBasketContent: React.Dispatch<React.SetStateAction<BakstetContentType[]>>;
+  setBasketValue: React.Dispatch<React.SetStateAction<number>>;
+  setBasketItem: React.Dispatch<React.SetStateAction<number>>;
 }
