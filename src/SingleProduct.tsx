@@ -17,10 +17,11 @@ const SingleProduct = ({
     basketContent,
     setBasketContent,
   } = useContext(AppContext);
+
   const handleAddProduct = () => {
-    setBasketItem(basketItem + 1);
-    setBasketValue(basketValue + price);
-    setBasketContent([...basketContent, { id, title }]);
+    setBasketItem((prev) => prev + 1);
+    setBasketValue((prev) => prev + price);
+    setBasketContent([...basketContent, { title, id }]);
   };
 
   return (

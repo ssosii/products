@@ -13,8 +13,7 @@ const BasketLayout = () => {
 
       {basketContent.map((product: BakstetContentType) => (
         <div>
-          <p>Nazwa {product.id} </p>
-          {product.title}
+          <p>Nazwa {product.title} </p>
         </div>
       ))}
 

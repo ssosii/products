@@ -9,10 +9,10 @@ export interface Product {
   thumbnail: string;
 }
 
-export interface BakstetContentType {
-  id: string;
+export type BakstetContentType = {
   title: string;
-}
+  id: string;
+};
 
 export interface Basket {
   basketValue: number;
