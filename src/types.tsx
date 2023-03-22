@@ -9,16 +9,22 @@ export interface Product {
   thumbnail: string;
 }
 
-export type BakstetContentType = {
+export interface BasketItem {
+  id: number;
+  quantity: number;
+}
+
+export interface BasketList {
   title: string;
-  id: string;
-};
+}
 
 export interface Basket {
   basketValue: number;
-  basketItem: number;
-  basketContent: BakstetContentType[];
-  setBasketContent: React.Dispatch<React.SetStateAction<BakstetContentType[]>>;
+  basketItemNumber: number;
   setBasketValue: React.Dispatch<React.SetStateAction<number>>;
-  setBasketItem: React.Dispatch<React.SetStateAction<number>>;
+  setBasketItemNumber: React.Dispatch<React.SetStateAction<number>>;
+  getItemQuantity: (id: number) => number;
+  increaseItemQuantity: (id: number, price: number, title: string) => void;
+  decreasetItemQuantity: (id: number, price: number) => void;
+  basketList: BasketList[];
 }

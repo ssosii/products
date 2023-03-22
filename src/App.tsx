@@ -7,13 +7,11 @@ import axiosAPI from "utils/axios";
 import "_mocks";
 
 // Components
-import Pagination from "./Pagniatios";
-import Basket from "./Basket";
-import Products from "./Products";
+import Pagination from "./components/Pagniatios";
+import Products from "./components/ProductsList";
+import Navigation from "components/Navigation";
 
 // Context
-
-import { AppContextProvider } from "./AppContext";
 
 // Style
 import "./style.css";
@@ -39,7 +37,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data} = await axiosAPI.get("/api/posts");
+        const { data } = await axiosAPI.get("/api/posts");
         // const {data} = await axiosAPI.post("/api/paginacja",{page: 3});
         console.log("response", data);
       } catch (e) {
@@ -56,19 +54,16 @@ function App() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <AppContextProvider>
-      <>
-        <Products products={currentPosts} />
+    <>
+      <Navigation />
+      <Products products={currentPosts} />
 
-        <Pagination
-          postsPerPage={postPerPage}
-          totalPosts={product.length}
-          paginate={paginate}
-        />
-
-        <Basket />
-      </>
-    </AppContextProvider>
+      <Pagination
+        postsPerPage={postPerPage}
+        totalPosts={product.length}
+        paginate={paginate}
+      />
+    </>
   );
 }
 

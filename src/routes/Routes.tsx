@@ -1,6 +1,6 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
-import App from "./App";
-import BasketLayout from "BasketLayout";
+import App from "../App";
+import ConfirmPage from "pages/BasketLayout";
 
 const LayoutRoutes = () => {
   const routes = useRoutes([
@@ -10,7 +10,7 @@ const LayoutRoutes = () => {
     },
     {
       path: "/koszyk",
-      element: <BasketLayout />,
+      element: <ConfirmPage />,
     },
   ]);
 

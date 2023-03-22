@@ -1,9 +1,8 @@
 import React from "react";
 import SingleProduct from "./SingleProduct";
-import { Product } from "./types";
+import { Product } from "../types";
 
-const Products = ({ products }: { products: Product[] }) => {
-    console.log("products",products);
+const ProductsList = ({ products }: { products: Product[] }) => {
   return (
     <>
       {products.map((product: Product) => (
@@ -13,4 +12,4 @@ const Products = ({ products }: { products: Product[] }) => {
   );
 };
 
-export default Products;
+export default ProductsList;
